@@ -48,23 +48,21 @@ local theme = lush(function(injected_functions)
     local sym = injected_functions.sym
 
     local colors = {
-        white = hsl(33, 100, 89),
-        dark_brown = hsl(9, 11, 16),
+        white = hsl(26, 85, 86),
+        dark_brown = hsl(15, 17, 16),
         charcoal = hsl(200, 7, 19),
         light_gray = hsl(170, 15, 70),
-        dark_gray = hsl(207, 2, 50),
-        light_red = hsl(10, 68, 62),
-        dark_red = hsl(10, 68, 30),
-        light_yellow = hsl(48, 75, 66),
-        dark_yellow = hsl(48, 75, 46),
-        light_pink = hsl(7, 70, 82),
-        dark_pink = hsl(345, 45, 49),
-        light_cyan = hsl(166, 27, 60),
-        dark_cyan = hsl(166, 27, 40),
-        light_orange  = hsl(28, 80, 69),
-        dark_orange  = hsl(28, 80, 44),
+        dark_gray = hsl(200, 7, 52),
+        light_red = hsl(14, 88, 65),
+        dark_red = hsl(6, 69, 56),
+        light_yellow = hsl(37, 92, 72),
+        dark_yellow = hsl(30, 82, 49),
+        light_pink = hsl(7, 70, 80),
+        dark_pink = hsl(350, 45, 49),
+        light_cyan = hsl(176, 45, 60),
+        dark_cyan = hsl(176, 40, 42),
+        light_green = hsl(135, 45, 70),
         dark_green = hsl(135, 45, 42),
-        mcm11 = hsl(33, 19, 64),
     }
 
     return {
@@ -86,9 +84,9 @@ local theme = lush(function(injected_functions)
         ColorColumn    { CursorLine }, -- Columns set with 'colorcolumn'
         Directory      { fg = colors.light_cyan }, -- Directory names (and other special names in listings)
         DiffAdd        { bg = colors.dark_green.da(50) }, -- Diff mode: Added line |diff.txt|
-        DiffChange     { bg = colors.charcoal }, -- Diff mode: Changed line |diff.txt|
-        DiffDelete     { bg = colors.dark_red.da(30) }, -- Diff mode: Deleted line |diff.txt|
-        DiffText       { bg = colors.dark_gray.da(30) }, -- Diff mode: Changed text within a changed line |diff.txt|
+        DiffChange     { bg = colors.dark_cyan.da(30) }, -- Diff mode: Changed line |diff.txt|
+        DiffDelete     { bg = colors.dark_red.da(40) }, -- Diff mode: Deleted line |diff.txt|
+        DiffText       { bg = colors.light_cyan, fg = colors.dark_brown}, -- Diff mode: Changed text within a changed line |diff.txt|
         -- EndOfBuffer    { }, -- Filler lines (~) after the end of the buffer. By default, this is highlighted like |hl-NonText|.
         TermCursor     { Cursor }, -- Cursor in a focused terminal
         -- TermCursorNC   { }, -- Cursor in an unfocused terminal
@@ -102,18 +100,18 @@ local theme = lush(function(injected_functions)
         LineNr         { fg = colors.dark_brown.li(20).de(30).ro(20), }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
         LineNrAbove    { LineNr }, -- Line number for when the 'relativenumber' option is set, above the cursor line
         LineNrBelow    { LineNr }, -- Line number for when the 'relativenumber' option is set, below the cursor line
-        CursorLineNr   { CursorLine, fg = colors.light_orange }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+        CursorLineNr   { CursorLine, fg = colors.light_yellow }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
         -- CursorLineFold { }, -- Like FoldColumn when 'cursorline' is set for the cursor line
         -- CursorLineSign { }, -- Like SignColumn when 'cursorline' is set for the cursor line
         MatchParen     { bg = colors.charcoal, fg = colors.dark_cyan }, -- Character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
         -- ModeMsg        { }, -- 'showmode' message (e.g., "-- INSERT -- ")
         -- MsgArea        { }, -- Area for messages and cmdline
         -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
-        MoreMsg        { fg = colors.dark_green }, -- |more-prompt|
+        MoreMsg        { fg = colors.light_green }, -- |more-prompt|
         NonText        { LineNr }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
         Normal         { bg = colors.dark_brown, fg = colors.white }, -- Normal text
         NormalFloat    { bg = colors.charcoal }, -- Normal text in floating windows.
-        -- FloatBorder    { }, -- Border of floating windows.
+        -- floatborder    { }, -- border of floating windows.
         FloatTitle     { fg = colors.light_yellow }, -- Title of floating windows.
         -- NormalNC       { }, -- normal text in non-current windows
         Pmenu          { NormalFloat }, -- Popup menu: Normal item.
@@ -124,9 +122,9 @@ local theme = lush(function(injected_functions)
         -- PmenuExtraSel  { }, -- Popup menu: Selected item "extra text"
         PmenuSbar      { bg = colors.charcoal.da(20) }, -- Popup menu: Scrollbar.
         PmenuThumb     { bg = colors.dark_gray }, -- Popup menu: Thumb of the scrollbar.
-        Question       { fg = colors.dark_cyan }, -- |hit-enter| prompt and yes/no questions
+        Question       { fg = colors.light_green }, -- |hit-enter| prompt and yes/no questions
         -- QuickFixLine   { }, -- Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-        Search         { bg = colors.light_orange, fg = colors.dark_brown }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+        Search         { bg = colors.light_yellow, fg = colors.dark_brown }, -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
         SpecialKey     { fg = colors.light_cyan }, -- Unprintable characters: text displayed differently from what it really is. But not 'listchars' whitespace. |hl-Whitespace|
         -- SpellBad       { }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
         -- SpellCap       { }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -157,17 +155,17 @@ local theme = lush(function(injected_functions)
 
         Comment        { fg = colors.dark_gray, gui = "italic" }, -- Any comment
 
-        Constant       { fg = colors.light_gray }, -- (*) Any constant
-        -- String         { }, --   A string constant: "this is a string"
-        -- Character      { }, --   A character constant: 'c', '\n'
-        -- Number         { }, --   A number constant: 234, 0xff
-        -- Boolean        { }, --   A boolean constant: TRUE, false
-        -- Float          { }, --   A floating point constant: 2.3e10
+        Constant       { fg = colors.white }, -- (*) Any constant
+        String         { fg = colors.light_red }, --   A string constant: "this is a string"
+        Character      { fg = colors.light_cyan }, --   A character constant: 'c', '\n'
+        Number         { Character }, --   A number constant: 234, 0xff
+        Boolean        { Character }, --   A boolean constant: TRUE, false
+        Float          { Character }, --   A floating point constant: 2.3e10
 
         Identifier     { fg = colors.white, }, -- (*) Any variable name
-        -- Function       { fg = colors.light_orange }, --   Function name (also: methods for classes)
+        -- Function       { fg = colors.light_yellow }, --   Function name (also: methods for classes)
 
-        Statement      { fg = colors.light_red }, -- (*) Any statement
+        Statement      { fg = colors.dark_red }, -- (*) Any statement
         -- Keyword        { }, --   any other keyword
         -- Conditional    { }, --   if, then, else, endif, switch, etc.
         -- Repeat         { }, --   for, do, while, etc.
@@ -186,9 +184,9 @@ local theme = lush(function(injected_functions)
         -- Structure      { }, --   struct, union, enum, etc.
         -- Typedef        { }, --   A typedef
 
-        Special        { fg = colors.light_orange }, -- (*) Any special symbol
+        Special        { fg = colors.light_yellow }, -- (*) Any special symbol
         -- SpecialChar    { }, --   Special character in a constant
-        Tag            { fg = colors.dark_orange }, --   You can use CTRL-] on this
+        Tag            { fg = colors.light_gray }, --   You can use CTRL-] on this
         -- Delimiter      { }, --   Character that needs attention
         -- SpecialComment { }, --   Special things inside a comment (e.g. '\n')
         -- Debug          { }, --   Debugging statements
@@ -301,7 +299,7 @@ local theme = lush(function(injected_functions)
         -- sym"@preproc"           { }, -- PreProc
         -- sym"@debug"             { }, -- Debug
         -- sym"@tag"               { }, -- Tag
-        sym"@tag.attribute" { fg = colors.light_orange },
+        sym"@tag.attribute" { fg = colors.white },
         sym"@type.qualifier" { Statement },
         sym"@constructor" { Statement },
         sym"@keyword.conditional.ternary" { Operator },
