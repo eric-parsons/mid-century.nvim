@@ -74,6 +74,7 @@ local theme = lush(function(injected_functions)
         --
         -- See :h highlight-groups
         --
+        Normal         { bg = colors.dark_brown, fg = colors.white }, -- Normal text
         Conceal        { }, -- Placeholder characters substituted for concealed text (see 'conceallevel')
         Cursor         { bg = colors.dark_cyan, fg = colors.white }, -- Character under the cursor
         CurSearch      { bg = colors.light_red }, -- Highlighting a search pattern under the cursor (see 'hlsearch')
@@ -109,7 +110,6 @@ local theme = lush(function(injected_functions)
         -- MsgSeparator   { }, -- Separator for scrolled messages, `msgsep` flag of 'display'
         MoreMsg        { fg = colors.light_green }, -- |more-prompt|
         NonText        { LineNr }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
-        Normal         { bg = colors.dark_brown, fg = colors.white }, -- Normal text
         NormalFloat    { bg = colors.charcoal }, -- Normal text in floating windows.
         -- floatborder    { }, -- border of floating windows.
         FloatTitle     { fg = colors.light_yellow }, -- Title of floating windows.
@@ -163,7 +163,7 @@ local theme = lush(function(injected_functions)
         Float          { Character }, --   A floating point constant: 2.3e10
 
         Identifier     { fg = colors.white, }, -- (*) Any variable name
-        -- Function       { fg = colors.light_yellow }, --   Function name (also: methods for classes)
+        Function       { Identifier }, --   Function name (also: methods for classes)
 
         Statement      { fg = colors.dark_red }, -- (*) Any statement
         -- Keyword        { }, --   any other keyword
@@ -187,7 +187,7 @@ local theme = lush(function(injected_functions)
         Special        { fg = colors.light_yellow }, -- (*) Any special symbol
         -- SpecialChar    { }, --   Special character in a constant
         Tag            { fg = colors.light_gray }, --   You can use CTRL-] on this
-        -- Delimiter      { }, --   Character that needs attention
+        Delimiter      { Special }, --   Character that needs attention
         -- SpecialComment { }, --   Special things inside a comment (e.g. '\n')
         -- Debug          { }, --   Debugging statements
 
@@ -289,7 +289,7 @@ local theme = lush(function(injected_functions)
         -- sym"@operator"          { }, -- Operator
         -- sym"@keyword"           { }, -- Keyword
         -- sym"@exception"         { }, -- Exception
-        -- sym"@variable"          { }, -- Identifier
+        sym"@variable"          { Identifier }, -- Identifier
         -- sym"@type"              { }, -- Type
         -- sym"@type.definition"   { }, -- Typedef
         -- sym"@storageclass"      { }, -- StorageClass
